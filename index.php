@@ -183,10 +183,10 @@ function eightCardPdf($pdf, $strings, $showNumbers){
             <textarea name="cards" id="cards"></textarea>
             <br><br>
             Cards per page:
-            <input type="radio" name="cardsPerPage" value="1"> 1 &nbsp;
-            <input type="radio" name="cardsPerPage" value="4" checked> 4 &nbsp;
-            <input type="radio" name="cardsPerPage" value="8"> 8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="showNumbers" name="showNumbers" value=1 checked> <label for="cropmark">Show numbers</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label><input type="radio" name="cardsPerPage" value="1"> 1 </label>&nbsp;
+            <label><input type="radio" name="cardsPerPage" value="4" checked> 4 </label>&nbsp;
+            <label><input type="radio" name="cardsPerPage" value="8"> 8 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="showNumbers" name="showNumbers" value=1 checked> <label for="showNumbers">Show numbers</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="checkbox" id="cropmark" name="cropmark" value=1> <label for="cropmark">Show cropmarks</label><br>
             <br>
                 <input type="submit" class="button" name="submit" value="Get PDF">
