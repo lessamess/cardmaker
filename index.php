@@ -51,6 +51,7 @@ if (!empty($_POST['cards'])) {
 function oneCardPdf($pdf, $strings, $showNumbers){
 
         Foreach ($strings as $key => $string) {
+        $string = trim($string);
         $num = $key + 1;
         $pdf->AddPage();
         $pdf->SetXY(20, 30);
@@ -70,6 +71,7 @@ function oneCardPdf($pdf, $strings, $showNumbers){
 }
 function fourCardPdf($pdf, $strings, $showNumbers){
     Foreach ($strings as $key => $string) {
+        $string = trim($string);
         $num = $key + 1;
         Switch ($num%4){
             case 1:
@@ -109,6 +111,7 @@ function fourCardPdf($pdf, $strings, $showNumbers){
 
 function eightCardPdf($pdf, $strings, $showNumbers){
     Foreach ($strings as $key => $string) {
+        $string = trim($string);
         $num = $key + 1;
         Switch ($num%8){
             case 1:
