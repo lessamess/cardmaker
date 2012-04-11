@@ -25,6 +25,11 @@
 
         }
 
+        .hint {
+            color: #87AF0E;
+            font-size: 0.9em;
+        }
+
         .footer{
             border-bottom: 1px dotted #c9a24f;
             padding:22px;

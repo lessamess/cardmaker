@@ -5,12 +5,19 @@ if (!empty($_POST['cards'])) {
     define('FPDF_FONTPATH','fpdf/font/');
     include("fpdf/fpdf.php");
 
-    $strings = explode("\n", trim($_POST['cards']));
+    $splitter ="\n";
+    //detect "---"
+    if(strpos($_POST['cards'], "---") !== false) {
+        $splitter ="---";
+    }
+
+    $strings = explode($splitter, trim($_POST['cards']));
 
     $showNumbers = 0;
     if (!empty($_POST['showNumbers'])) {
         $showNumbers = 1;
     }
+
 
     $cardsPerPage = $_POST['cardsPerPage'];
 
@@ -166,7 +173,8 @@ function eightCardPdf($pdf, $strings, $showNumbers){
         <p class="claim instr">Enter Card-Names&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp; Get PDF&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Print Your Cardsort Deck</p>
         <br>
 
-        Enter Card-Names, one name per line:<br><br>
+        Enter Card-Names, one name per line<br>
+        <span class="hint">→ use "---" as a separator to create multiple-line cards</span><br><br>
 
         <form action="index.php" method="POST">
             <textarea name="cards" id="cards"></textarea>
