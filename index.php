@@ -2,8 +2,8 @@
 
 if (!empty($_POST['cards'])) {
 
-    define('FPDF_FONTPATH','fpdf/font/');
-    include("fpdf/fpdf.php");
+    define('tFPDF_FONTPATH','tfpdf/font/');
+    include("tfpdf/tfpdf.php");
 
     $splitter ="\n";
     //detect "---"
@@ -26,7 +26,9 @@ if (!empty($_POST['cards'])) {
         $orientation = "P";
     }
 
-    $pdf = new FPDF($orientation, "mm", "A4");
+    $pdf = new tFPDF($orientation, "mm", "A4");
+    $pdf->AddFont('DejaVu','','DejaVuSans.ttf',true);
+    $pdf->AddFont('DejaVuBold','','DejaVuSans-Bold.ttf',true);
     $pdf->SetTopMargin = 0;
     $pdf->SetDrawColor(220, 220, 220);
 
@@ -58,12 +60,12 @@ function oneCardPdf($pdf, $strings, $showNumbers){
 
         //write Number
         if ($showNumbers == 1) {
-            $pdf->SetFont('Arial','',20);
-            $pdf->Cell( 240, 20, $num,0,2);
+            $pdf->SetFont('DejaVu','',20);
+            $pdf->Cell( 240, 20, (string)$num,0,2);
         }
         //write Card Name
-        $pdf->SetFont('Arial','B',32);
-        $pdf->MultiCell( 257, 16, utf8_decode($string),0,"L"); // write Cardname
+        $pdf->SetFont('DejaVuBold','',32);
+        $pdf->MultiCell( 257, 16, $string,0,"L"); // write Cardname
         //Syntax: MultiCell(float w , float h , string txt [, mixed border] [, string align] [, integer fill])
     }
     return $pdf;
@@ -99,12 +101,12 @@ function fourCardPdf($pdf, $strings, $showNumbers){
         }
         //write Number
         if ($showNumbers == 1) {
-            $pdf->SetFont('Arial','',12);
-            $pdf->Cell( 110, 10, $num,0,2);
+            $pdf->SetFont('DejaVu','',12);
+            $pdf->Cell( 110, 10, (string)$num ,0,2);
         }
         //write Card Name
-        $pdf->SetFont('Arial','B',14);
-        $pdf->MultiCell( 110, 8, utf8_decode($string),0,"L"); // write Cardname
+        $pdf->SetFont('DejaVuBold','',14);
+        $pdf->MultiCell( 110, 8, $string,0,"L"); // write Cardname
     }
     return $pdf;
 }
@@ -151,12 +153,12 @@ function eightCardPdf($pdf, $strings, $showNumbers){
         }
         //write Number
         if ($showNumbers == 1) {
-            $pdf->SetFont('Arial','',12);
-            $pdf->Cell( 85, 10, $num,0,2);
+            $pdf->SetFont('DejaVu','',12);
+            $pdf->Cell( 85, 10, (string)$num,0,2);
         }
         //write Card Name
-        $pdf->SetFont('Arial','B',14);
-        $pdf->MultiCell( 85, 7, utf8_decode($string),0,"L"); // write Cardname
+        $pdf->SetFont('DejaVuBold','',14);
+        $pdf->MultiCell( 85, 7, $string,0,"L"); // write Cardname
     }
     return $pdf;
 }
