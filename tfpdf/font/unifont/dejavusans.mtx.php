@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-63;
 $ut=44;
-$ttffile='/Library/WebServer/Documents/memibeltrame.lo/cardmaker/tfpdf/font/unifont/DejaVuSans.ttf';
+$ttffile='tfpdf/font/unifont/DejaVuSans.ttf';
 $originalsize=720012;
 $fontkey='dejavu';
 ?>
