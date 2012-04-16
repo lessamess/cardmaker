@@ -174,9 +174,9 @@ function eightCardPdf($pdf, $strings, $showNumbers){
 <body>
     <div id="everything">
         <h1>Cardmaker</h1>
-        <div class="claim">The easy way to make a cardsort deck.</div>
+        <div class="claim">The easy way to make <br class="hideOnDesktop">a cardsort deck.</div>
         <br>
-        <p class="claim instr">Enter Card-Names&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp; Get PDF&nbsp;&nbsp;&nbsp;→&nbsp;&nbsp;&nbsp;Print Your Cardsort Deck</p>
+        <p class="claim instr">Enter Card-Names&nbsp;&nbsp;&nbsp;<br class="hideOnDesktop">→&nbsp;&nbsp;&nbsp; Get PDF&nbsp;&nbsp;&nbsp;<br class="hideOnDesktop">→&nbsp;&nbsp;&nbsp;Print Your Cardsort Deck</p>
         <br>
 
         Enter Card-Names, one name per line<br>
@@ -188,7 +188,7 @@ function eightCardPdf($pdf, $strings, $showNumbers){
             Cards per page:
             <label><input type="radio" name="cardsPerPage" value="1"> 1 </label>&nbsp;
             <label><input type="radio" name="cardsPerPage" value="4" checked> 4 </label>&nbsp;
-            <label><input type="radio" name="cardsPerPage" value="8"> 8 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label><input type="radio" name="cardsPerPage" value="8"> 8 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br class="hideOnDesktop">
             <input type="checkbox" id="showNumbers" name="showNumbers" value=1 checked> <label for="showNumbers">Show numbers</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br class="hideOnDesktop"><br class="hideOnDesktop">
             <input type="checkbox" id="cropmark" name="cropmark" value=1> <label for="cropmark">Show cropmarks</label><br>
             <br>
