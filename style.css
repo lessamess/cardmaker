@@ -91,3 +91,27 @@
                 );
             background-image: -moz-linear-gradient(center top , #7DB72F, #4E7D0E);
         }
+        .hideOnDesktop {
+            display: none;
+        }
+
+        @media screen and (orientation: portrait) and (max-width: 480px){
+                #everything, .footer, .instr {
+                    width: 280px;
+                    padding:10px;
+                }
+                .instr {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                textarea {
+                    height: 150px;
+                }
+                body {
+                    margin-left: -150px;
+                }
+                .hideOnDesktop {
+                    display: block;
+                }
+        }

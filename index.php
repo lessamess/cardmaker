@@ -167,7 +167,8 @@ function eightCardPdf($pdf, $strings, $showNumbers){
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Cardmaker</title>
+    <meta name="viewport" content=" minimum-scale=1.0, maximum-scale=1.0, width=device-width; user-scalable=no">
+        <title>Cardmaker</title>
     <link href="style.css" media="screen" type="text/css" rel="stylesheet" />
 </head>
 <body>
@@ -179,7 +180,7 @@ function eightCardPdf($pdf, $strings, $showNumbers){
         <br>
 
         Enter Card-Names, one name per line<br>
-        <span class="hint">→ use "---" as a separator to create multiple-line cards</span><br><br>
+        <span class="hint">(or use "---" as a separator to create multiple-line cards)</span><br><br>
 
         <form action="index.php" method="POST">
             <textarea name="cards" id="cards"></textarea>
@@ -188,7 +189,7 @@ function eightCardPdf($pdf, $strings, $showNumbers){
             <label><input type="radio" name="cardsPerPage" value="1"> 1 </label>&nbsp;
             <label><input type="radio" name="cardsPerPage" value="4" checked> 4 </label>&nbsp;
             <label><input type="radio" name="cardsPerPage" value="8"> 8 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" id="showNumbers" name="showNumbers" value=1 checked> <label for="showNumbers">Show numbers</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="showNumbers" name="showNumbers" value=1 checked> <label for="showNumbers">Show numbers</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br class="hideOnDesktop"><br class="hideOnDesktop">
             <input type="checkbox" id="cropmark" name="cropmark" value=1> <label for="cropmark">Show cropmarks</label><br>
             <br>
                 <input type="submit" class="button" name="submit" value="Get PDF">
