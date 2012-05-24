@@ -22,7 +22,7 @@ if (!empty($_POST['cards'])) {
     $cardsPerPage = $_POST['cardsPerPage'];
 
     $orientation = "L";
-    if ($cardsPerPage == 8) {
+    if ($cardsPerPage == 8 OR $cardsPerPage == 2) {
         $orientation = "P";
     }
 
@@ -36,6 +36,9 @@ if (!empty($_POST['cards'])) {
     switch ($cardsPerPage){
         case 1:
             $pdf = oneCardPdf($pdf, $strings, $showNumbers);
+            break;
+        case 2:
+            $pdf = twoCardPdf($pdf, $strings, $showNumbers);
             break;
         case 4:
             $pdf = fourCardPdf($pdf, $strings, $showNumbers);
@@ -71,6 +74,38 @@ function oneCardPdf($pdf, $strings, $showNumbers){
     return $pdf;
 
 }
+function twoCardPdf($pdf, $strings, $showNumbers){
+    Foreach ($strings as $key => $string) {
+        $string = trim($string);
+        $num = $key + 1;
+        Switch ($num%2){
+            case 1:
+                $pdf->AddPage();
+
+                // draw cropmarks
+                if(!empty($_POST['cropmark'])) {
+                    $pdf->Line(0, 148, 20, 148);
+                    $pdf->Line(190, 148, 210,148);
+
+                }
+                $pdf->SetXY(20, 20);
+                break;
+            case 0:
+                $pdf->SetXY(20, 168);
+            break;
+        }
+        //write Number
+        if ($showNumbers == 1) {
+            $pdf->SetFont('DejaVu','',18);
+            $pdf->Cell( 110, 10, (string)$num ,0,2);
+        }
+        //write Card Name
+        $pdf->SetFont('DejaVuBold','',20);
+        $pdf->MultiCell( 180, 8, $string,0,"L"); // write Cardname
+    }
+    return $pdf;
+}
+
 function fourCardPdf($pdf, $strings, $showNumbers){
     Foreach ($strings as $key => $string) {
         $string = trim($string);
@@ -187,10 +222,11 @@ function eightCardPdf($pdf, $strings, $showNumbers){
             <br><br>
             Cards per page:
             <label><input type="radio" name="cardsPerPage" value="1"> 1 </label>&nbsp;
+            <label><input type="radio" name="cardsPerPage" value="2"> 2 </label>&nbsp;
             <label><input type="radio" name="cardsPerPage" value="4" checked> 4 </label>&nbsp;
             <label><input type="radio" name="cardsPerPage" value="8"> 8 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br class="hideOnDesktop">
-            <input type="checkbox" id="showNumbers" name="showNumbers" value=1 checked> <label for="showNumbers">Show numbers</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br class="hideOnDesktop"><br class="hideOnDesktop">
-            <input type="checkbox" id="cropmark" name="cropmark" value=1> <label for="cropmark">Show cropmarks</label><br>
+            Show:&nbsp;&nbsp;<input type="checkbox" id="showNumbers" name="showNumbers" value=1 checked> <label for="showNumbers">numbers</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br class="hideOnDesktop"><br class="hideOnDesktop">
+            <input type="checkbox" id="cropmark" name="cropmark" value=1> <label for="cropmark">cropmarks</label><br>
             <br>
                 <input type="submit" class="button" name="submit" value="Get PDF">
         </form>
